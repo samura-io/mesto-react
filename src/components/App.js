@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
-import PopupWithForms from "./PopupWithForm";
+import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup.js";
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
       <Footer />
 
       {/* Попап редактирования аватара */}
-      <PopupWithForms 
+      <PopupWithForm 
       isOpen={isEditAvatarPopupOpen}
       isClose = {closeAllPopups}
       name = 'avatar'
@@ -63,7 +63,7 @@ function App() {
       }/>
 
       {/* Попап редактирования профиля */}
-      <PopupWithForms 
+      <PopupWithForm 
       isOpen={isEditProfilePopupOpen}
       isClose = {closeAllPopups}
       name = 'Profile'
@@ -83,7 +83,7 @@ function App() {
       }/>
 
       {/* Попап добавления карточек */}
-      <PopupWithForms 
+      <PopupWithForm 
       isOpen={isAddPlacePopupOpen}
       isClose = {closeAllPopups}
       name = 'Place'
