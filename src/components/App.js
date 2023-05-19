@@ -9,7 +9,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState()
+  const [selectedCard, setSelectedCard] = React.useState(null)
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true)
@@ -51,25 +51,21 @@ function App() {
       <PopupWithForm 
       isOpen={isEditAvatarPopupOpen}
       isClose = {closeAllPopups}
+      buttonText = {'Сохранить'}
       name = 'avatar'
-      title = 'Обновить аватар'
-      children={
-        <>
-          <input className="popup__input popup__input_value_avatar" type="url" defaultValue="" placeholder="Ссылка на изображение" 
-              name="avatar" id="avatar" required />
-          <span className="popup__input-error avatar-error"></span>
-          <button type="submit" className="popup__save-button" aria-label="Сохранить">Сохранить</button>
-        </>
-      }/>
+      title = 'Обновить аватар'>
+        <input className="popup__input popup__input_value_avatar" type="url" defaultValue="" placeholder="Ссылка на изображение" 
+            name="avatar" id="avatar" required />
+        <span className="popup__input-error avatar-error"></span>
+      </PopupWithForm>
 
       {/* Попап редактирования профиля */}
       <PopupWithForm 
       isOpen={isEditProfilePopupOpen}
       isClose = {closeAllPopups}
+      buttonText = {'Сохранить'}
       name = 'Profile'
-      title = 'Редактировать профиль'
-      children={
-        <>
+      title = 'Редактировать профиль'>
           <input className="popup__input popup__input_value_name" type="text" required defaultValue="" 
               placeholder="Имя" name="username" id="username" minLength="2" maxLength="40" />
           <span className="popup__input-error username-error"></span>
@@ -77,19 +73,15 @@ function App() {
           <input className="popup__input popup__input_value_profession" type="text" required defaultValue="" 
               placeholder="О себе" name="profession" id="profession"  minLength="2" maxLength="200" />
           <span className="popup__input-error profession-error"></span>
-            
-          <button type="submit" className="popup__save-button" aria-label="Сохранить">Сохранить</button>
-        </>
-      }/>
+      </PopupWithForm>
 
       {/* Попап добавления карточек */}
       <PopupWithForm 
       isOpen={isAddPlacePopupOpen}
       isClose = {closeAllPopups}
+      buttonText = {'Сохранить'}
       name = 'Place'
-      title = 'Новое место'
-      children={
-        <>
+      title = 'Новое место'>
           <input className="popup__input popup__input_value_place" type="text" defaultValue=""
               placeholder="Название" name="name" minLength="2" maxLength="30" id="name" required />
           <span className="popup__input-error name-error"></span>
@@ -97,10 +89,8 @@ function App() {
           <input className="popup__input popup__input_value_link" type="url" defaultValue="" placeholder="Ссылка на картинку" 
               name="link" id="link" required />
               <span className="popup__input-error link-error"></span>
-              
-          <button type="submit" className="popup__save-button" aria-label="Создать">Создать</button>
-        </>
-      }/>
+      </PopupWithForm>
+
       {/* Попап с картинкой */}
       <ImagePopup
       card={selectedCard}

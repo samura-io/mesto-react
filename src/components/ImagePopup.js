@@ -1,6 +1,6 @@
 function ImagePopup (props) {
 
-    let isRenderer = props.card
+    const isRenderer = props.card
 
     return (
         <div className={`popup popup_zoom_active popup_content_image ${isRenderer?"popup_opened":''}`}>
