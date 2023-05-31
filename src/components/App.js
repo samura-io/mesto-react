@@ -47,11 +47,13 @@ function App() {
 
   const handleDeleteCard = () => {
       setIsrenderLoading(true);
-      api.deleteCard(idDeleteCard).then(()=>{
+      api.deleteCard(idDeleteCard)
+      .then(()=>{
         setCards((state) => state.filter((c)=> idDeleteCard !== c._id));
         setIdDeleteCard('');
-        setIsrenderLoading(false);
-      }).catch((err)=>{console.log(err)}) 
+      })
+      .catch((err)=>{console.log(err)})
+      .finally(()=>{setIsrenderLoading(false)}) 
   }
 
   const handleOpenPopupDelete = (cardId) => {
@@ -67,29 +69,35 @@ function App() {
 
   const handleUpdeteUser = (data) => {
     setIsrenderLoading(true);
-    api.editUserInfo(data.name, data.about).then((res)=>{
+    api.editUserInfo(data.name, data.about)
+    .then((res)=>{
       setCurrentUser(res);
       closeAllPopups();
-      setIsrenderLoading(false);
-    }).catch((err)=>{console.log(err)});
+    })
+    .catch((err)=>{console.log(err)})
+    .finally(()=>{setIsrenderLoading(false)});
   }
 
   const handleUpdeteAvatar = (link) => {
     setIsrenderLoading(true);
-    api.avatarEdit(link).then((res)=>{
+    api.avatarEdit(link)
+    .then((res)=>{
       setCurrentUser(res);
       closeAllPopups();
-      setIsrenderLoading(false);
-    }).catch((err)=>{console.log(err)});
+    })
+    .catch((err)=>{console.log(err)})
+    .finally(()=>{setIsrenderLoading(false)});
   }
 
   const handleAddPlaceSubmit = (data) =>{
     setIsrenderLoading(true);
-    api.addCard(data).then((res)=>{
+    api.addCard(data)
+    .then((res)=>{
       setCards([res, ...cards]);
       closeAllPopups();
-      setIsrenderLoading(false);
-    }).catch((err)=>{console.log(err)});
+    })
+    .catch((err)=>{console.log(err)})
+    .finally(()=>{setIsrenderLoading(false)});
   }
 
   const closeAllPopups = () => {
